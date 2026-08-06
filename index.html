@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>duPont Manual High School TSA</title>
+  <meta name="description" content="Official website of the duPont Manual High School Technology Student Association chapter.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Link to external CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-content">
+    <div class="nav-logo" onclick="showPage('home')" tabindex="0" role="button">dMHS TSA</div>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <button id="nav-home" class="active" onclick="showPage('home')">Home</button>
+      <button id="nav-events" onclick="showPage('events')">Events</button>
+      <button id="nav-leadership" onclick="showPage('leadership')">Leadership</button>
+      <button id="nav-announcements" onclick="showPage('announcements')">Announcements</button>
+      <button id="nav-faq" onclick="showPage('faq')">FAQ</button>
+      <a href="https://tsaweb.org" target="_blank" class="nav-cta" style="text-decoration:none; text-align:center;">National Site</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════ HOME ══════════ -->
+<div class="page active" id="page-home">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Welcome to a New Year</div>
+      <h1 class="hero-title">duPont Manual High School<br><span class="highlight">TSA Chapter</span></h1>
+      <p class="hero-subtitle">Developing leadership, technical skills, and innovation in science, technology, engineering, and mathematics.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="showPage('events')">View Competitions</button>
+        <button class="btn btn-secondary" onclick="showPage('announcements')">Latest Updates</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-grid">
+    <!-- CAROUSEL -->
+    <div class="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide"><img src="/api/placeholder/800/500" alt="Students competing at the state conference"><div class="carousel-caption">State Conference Delegation</div></div>
+        <div class="carousel-slide"><img src="/api/placeholder/800/500" alt="Members working on a robotics project"><div class="carousel-caption">Robotics Team Preparation</div></div>
+        <div class="carousel-slide"><img src="/api/placeholder/800/500" alt="Chapter officers planning the year"><div class="carousel-caption">Officer Planning Session</div></div>
+      </div>
+      <div class="carousel-controls">
+        <button class="carousel-btn carousel-prev" aria-label="Previous image">❮</button>
+        <button class="carousel-btn carousel-next" aria-label="Next image">❯</button>
+      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </div>
+
+    <!-- STATE AWARDS LIST -->
+    <div class="home-awards-card">
+      <h2 style="font-size:1.25rem; font-weight:700; color:var(--text); margin-bottom:0.25rem;">State Results</h2>
+      <p style="font-size:0.95rem; color:var(--muted); margin-bottom:1.5rem; border-bottom:1px solid var(--border); padding-bottom:1rem;">Recent Kentucky State Conference Placements</p>
+      <div class="home-awards-list" id="home-awards-list">
+        <!-- JS populates this -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ EVENTS ══════════ -->
+<div class="page" id="page-events">
+  <div class="events-page-wrap">
+    <span class="section-label">Competition Guide</span>
+    <h2 class="section-title">Competitive Events</h2>
+    <p class="section-sub">Filter events by type or search by keyword to find your competition.</p>
+    
+    <div class="controls-container">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="event-search" placeholder="Search events (e.g. video, engineering, coding)..." autocomplete="off" spellcheck="false">
+        <button class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+      </div>
+      <div class="category-filters">
+        <button class="cat-btn active" onclick="filterEvents('all', this)">All Events</button>
+        <button class="cat-btn" onclick="filterEvents('individual', this)">Individual</button>
+        <button class="cat-btn" onclick="filterEvents('team', this)">Team</button>
+        <button class="cat-btn" onclick="filterEvents('chapter', this)">Chapter</button>
+      </div>
+    </div>
+
+    <div class="events-grid" id="events-grid"></div>
+  </div>
+</div>
+
+<!-- ══════════ LEADERSHIP ══════════ -->
+<div class="page" id="page-leadership">
+  <div class="leadership-page-wrap">
+    <span class="section-label">Our Team</span>
+    <h2 class="section-title">Chapter Leadership</h2>
+    <p class="section-sub">Meet the students directing duPont Manual TSA this year.</p>
+
+    <div class="section-label" style="margin-top:2rem;">Executive Officers</div>
+    <div class="leader-grid">
+      <div class="leader-panel"><div class="leader-image">Photo</div><h3>President</h3><div class="leader-name">Alex Chen</div><p class="leader-bio">Temporary placeholder bio for the president. Leads chapter meetings, oversees committees, and works directly with the advisor to plan the year.</p></div>
+      <div class="leader-panel"><div class="leader-image">Photo</div><h3>Vice President</h3><div class="leader-name">Jordan Smith</div><p class="leader-bio">Temporary placeholder bio for the vice president. Supports the president, assists with membership tracking, and coordinates competitive event groups.</p></div>
+      <div class="leader-panel"><div class="leader-image">Photo</div><h3>Secretary</h3><div class="leader-name">Taylor Patel</div><p class="leader-bio">Temporary placeholder bio for the secretary. Records meeting minutes, manages chapter files, and tracks event registrations.</p></div>
+      <div class="leader-panel"><div class="leader-image">Photo</div><h3>Treasurer</h3><div class="leader-name">Sam Williams</div><p class="leader-bio">Temporary placeholder bio for the treasurer. Helps the advisor track dues, fundraising efforts, and competition fees.</p></div>
+      <div class="leader-panel"><div class="leader-image">Photo</div><h3>Reporter</h3><div class="leader-name">Casey Rivera</div><p class="leader-bio">Temporary placeholder bio for the reporter. Shares chapter updates, documents achievements, and supports public announcements.</p></div>
+      <div class="leader-panel"><div class="leader-image">Photo</div><h3>Sergeant at Arms</h3><div class="leader-name">Edward Kim</div><p class="leader-bio">Temporary placeholder bio for the sergeant at arms. Helps maintain order at meetings and supports event logistics.</p></div>
+    </div>
+    
+    <div class="section-label" style="margin-top:2rem;">Committees</div>
+    <p class="section-sub">Our committee heads coordinate the chapter’s major initiatives and support officer leadership.</p>
+    <div class="committee-rows">
+      <div class="committee-row">
+        <div class="committee-panel"><div class="leader-image">Photo</div><h4>Recruitment Head</h4><div class="leader-name">Avery James</div><p class="leader-bio">Temporary placeholder bio for the recruitment head. Leads membership drives and helps welcome new students.</p></div>
+        <div class="committee-panel"><div class="leader-image">Photo</div><h4>Competition Head</h4><div class="leader-name">Riley Chen</div><p class="leader-bio">Temporary placeholder bio for the competition head. Organizes event preparation and tracks competition deadlines.</p></div>
+        <div class="committee-panel"><div class="leader-image">Photo</div><h4>Public Relations Head</h4><div class="leader-name">Dakota Hill</div><p class="leader-bio">Temporary placeholder bio for the PR head. Manages publicity, social posts, and chapter promotion.</p></div>
+      </div>
+      <div class="committee-row">
+        <div class="committee-panel"><div class="leader-image">Photo</div><h4>Outreach Head</h4><div class="leader-name">Morgan Brooks</div><p class="leader-bio">Temporary placeholder bio for the outreach head. Coordinates service efforts and school partnerships.</p></div>
+        <div class="committee-panel"><div class="leader-image">Photo</div><h4>Hospitality Head</h4><div class="leader-name">Taylor Reid</div><p class="leader-bio">Temporary placeholder bio for the hospitality head. Arranges refreshments, supplies, and member support at events.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ ANNOUNCEMENTS ══════════ -->
+<div class="page" id="page-announcements">
+  <div class="announce-page-wrap">
+    <span class="section-label">Updates</span>
+    <h2 class="section-title">Chapter Announcements</h2>
+    <p class="section-sub">Important dates and news from your chapter advisor.</p>
+    <div class="announce-list">
+      <div class="announce-item">
+        <div class="announce-date"><span class="month">Sep</span><span class="day">5</span></div>
+        <div class="announce-content"><h3>📢 Kickoff Meeting — All Members</h3><p>First meeting of the year! Learn about events, dues deadline, and our competition calendar.</p></div>
+      </div>
+      <div class="announce-item">
+        <div class="announce-date"><span class="month">Oct</span><span class="day">1</span></div>
+        <div class="announce-content"><h3>📝 Event Registration Deadline</h3><p>Submit your event selections to the advisor. You must be a paid member to compete.</p></div>
+      </div>
+      <div class="announce-item">
+        <div class="announce-date"><span class="month">Nov</span><span class="day">15</span></div>
+        <div class="announce-content"><h3>🏅 Regional Competition</h3><p>Regional conference — check with your advisor for exact location and transportation details.</p></div>
+      </div>
+      <div class="announce-item">
+        <div class="announce-date"><span class="month">Feb</span><span class="day">20</span></div>
+        <div class="announce-content"><h3>🌟 State Conference</h3><p>Top qualifiers from regionals advance. Contact advisor for hotel and carpool info.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ FAQ ══════════ -->
+<div class="page" id="page-faq">
+  <div class="faq-page-wrap">
+    <span class="section-label">Questions</span>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">A quick guide to joining, competing, and getting involved with our chapter.</p>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary class="faq-question">How do I join?</summary>
+        <div class="faq-answer">Attend one of our meetings, talk with the advisor, and complete the chapter registration and membership steps. New members are always welcome.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">What is the membership cost?</summary>
+        <div class="faq-answer">Membership fees are shared with students at the start of the school year. Please ask the advisor for the current amount and payment deadline.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">When do meetings happen?</summary>
+        <div class="faq-answer">Meeting dates are posted in announcements and shared during school. Check the chapter calendar and follow the advisor's reminders.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Who is eligible to compete?</summary>
+        <div class="faq-answer">Any active chapter member who has completed registration and is approved by the advisor may be eligible to compete, depending on the event rules and school policies.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">Is there a dress code?</summary>
+        <div class="faq-answer">Members should wear school-appropriate attire for chapter meetings. For competitions, the advisor will provide any required dress or presentation expectations.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-question">What about travel information?</summary>
+        <div class="faq-answer">Travel plans, transportation details, and hotel information for conferences are shared by the advisor as events approach. Students should check announcements regularly.</div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal"><button class="modal-close" onclick="closeModalDirect()">✕</button><div id="modal-body"></div></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>duPont Manual High School TSA &nbsp;·&nbsp; <a href="https://tsaweb.org" target="_blank">tsaweb.org</a> &nbsp;·&nbsp; Site maintained by duPont Manual TSA</p>
+</footer>
+
+<!-- External Scripts -->
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
